@@ -200,7 +200,7 @@
         <div class="text-container h-full flex items-center justify-center font-sans">
             <span>
                 <p class="text-slate-300 font-bold text-xs">EXPLORE, FIND AND BUY PRODUCT</p>
-                <h1 class="text-white text-5xl font-bold">Join the New Era of <br> Digital Product</h1>
+                <h1 class="text-white text-5xl font-bold">Join the New Era of <br> Digital Creation</h1>
             </span>
         </div>
     </div>
@@ -248,13 +248,13 @@
         document.addEventListener("DOMContentLoaded", setVanta);
     </script> -->
     
-    <!-- All product -->
+
         <div class="-mt-10 relative z-10 w-full h-20 backdrop-blur supports-backdrop-blur:bg-white/60 "></div>
 
         <div class="bg-transparent ">
 
             <div id="three-container"></div>
-                <h1 class="pl-10 text-white font-extrabold col-start-1 row-start-1 mt-1">All Product</h1>
+                <h1 class="pl-10 text-white font-extrabold col-start-1 row-start-1 mt-1">All Creation</h1>
                 <div class="flex flex-wrap gap-[35px] mt-14 pb-20 pl-5">
                 
                     <?php foreach ($dataSemuaProduk as $value): ?>
