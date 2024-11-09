@@ -81,7 +81,7 @@
             </form>
         </div>
         <div class="flex mr-20 gap-5 items-center font-sans font-bold">
-            <span class="material-symbols-outlined pr-5 border-r-2"><a href="keranjang.php">shopping_cart</a></span> 
+            <span class="material-symbols-outlined pr-5 border-r-2"><a href="keranjang.php">Creation_cart</a></span> 
             <!-- Modal toggle -->
             <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="flex gap-2" type="button">
                 <span class="material-symbols-outlined">account_circle</span>
