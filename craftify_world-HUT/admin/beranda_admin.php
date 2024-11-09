@@ -96,14 +96,14 @@
     <!-- Title -->
     <div class="h-full flex items-center justify-center font-sans" >
         <span>
-            <p class="text-slate-300 font-bold text-xs text-center">EXPLORE, CREATE  AND FIND PRODUCT</p>
+            <p class="text-slate-300 font-bold text-xs text-center">EXPLORE, CREATE AND GIVE POIN</p>
             <h1 class="text-white text-5xl font-bold text-center">Dashboard Admin</h1>
         </span>
     </div>
 
     <!-- All product -->
     <div class="grid grid-cols-1 grid-rows-2 mt-5 ml-16">
-        <h1 class="text-white font-extrabold col-start-1 row-start-1">All Product</h1>
+        <h1 class="text-white font-extrabold col-start-1 row-start-1">All Creation</h1>
         
         <div class="flex flex-wrap absolute gap-[35px] mt-14 pb-20">
             <!-- Modal toggle tambah -->
@@ -111,7 +111,7 @@
             <div class="border bg-[#151D28] rounded-md overflow-hidden border-red-white w-[200px] h-[380px] flex items-center justify-center">
                 <span class="text-white inline-block my-2 mx-4">
                         <span class="material-symbols-outlined text-6xl">add</span>
-                        <h1>Tambah Produk</h1>
+                        <h1>Tambah karya</h1>
                     </span>
                 </div>
             </button>
@@ -142,7 +142,7 @@
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                        Tambah Produk
+                        Tambah Karya
                     </h3>
                     <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="add-product-modal">
                         <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
