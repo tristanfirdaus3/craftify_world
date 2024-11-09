@@ -199,7 +199,7 @@
         
         <div class="text-container h-full flex items-center justify-center font-sans">
             <span>
-                <p class="text-slate-300 font-bold text-xs">EXPLORE, FIND AND BUY PRODUCT</p>
+                <p class="text-slate-300 font-bold text-xs">EXPLORE, FIND AND GIVE POIN</p>
                 <h1 class="text-white text-5xl font-bold">Join the New Era of <br> Digital Creation</h1>
             </span>
         </div>
