@@ -3,7 +3,7 @@
     session_start();
 
     if (!isset($_SESSION['id'])) {
-        header("Location: index.php");
+        header("Location:index.php");
         exit();
     }
 
@@ -45,7 +45,7 @@
         session_unset();
         session_destroy();
         
-        header("Location: ../index.php");
+        header("Location:index.php");
         exit();
     }
 ?>
@@ -57,7 +57,7 @@
     <title>product</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../animatedStars.css">
+    <link rel="stylesheet" href="animatedStars.css">
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -81,7 +81,7 @@
             </form>
         </div>
         <div class="flex mr-20 gap-5 items-center font-sans font-bold">
-            <span class="material-symbols-outlined pr-5 border-r-2"><a href="keranjang.php">Creation_cart</a></span> 
+            <span class="material-symbols-outlined pr-5 border-r-2"><a href="keranjang.php">shopping_cart</a></span> 
             <!-- Modal toggle -->
             <button data-modal-target="crud-modal" data-modal-toggle="crud-modal" class="flex gap-2" type="button">
                 <span class="material-symbols-outlined">account_circle</span>
