@@ -202,45 +202,6 @@
         </div>
     </div> 
 
-    <?php 
-        if(isset($_POST['submit'])){ 
-            include 'koneksi.php';
-            $nim = $_POST['nim'];
-            $profile = $_FILES["profile"]["tmp_name"];
-            $nama = $_POST['nama'];
-            $prodi = $_POST['prodi'];
-            $falkutas = $_POST['falkutas'];
-            $semester = $_POST['semester'];
-
-            $target_file = $data['profile'];
-
-            if($profile != null){
-                $target_dir = "img/";
-                $target_file = $target_dir . basename($_FILES["profile"]["name"]);
-                copy($profile, $target_file);
-                $uploadOk = 1;
-                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            }
-
-            try { 
-                $query = $db->prepare("update mahasiswa set nim = ?, profile = ?, nama = ?, prodi = ?, falkutas = ?, semester = ? where nim = ?");
-                $query->bindParam(1, $nim);
-                $query->bindParam(2, $target_file);
-                $query->bindParam(3, $nama);
-                $query->bindParam(4, $prodi);
-                $query->bindParam(5, $falkutas);
-                $query->bindParam(6, $semester);
-                $query->bindParam(7, $nim);
-                $query->execute();
-                $query=null; //tutup koneksi
-                echo "<script> alert('Data telah disave $target_file!!');
-                window.location.replace('index.php');</script>"; 
-                die(); 
-            }catch (PDOException $exception) {
-                die("Connection error: " . $exception->getMessage());
-            }
-        }
-    ?>
 
     <script>
         function preview() {
