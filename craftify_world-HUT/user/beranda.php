@@ -47,7 +47,7 @@
         session_unset();
         session_destroy();
         
-        header("Location: ../index.php");
+        header("Location:index.php");
         exit();
     }
 ?>
@@ -176,7 +176,7 @@
                         <button type="submit">
                             <span class="material-symbols-outlined">search</span>
                         </button>
-                        <input name="keyword" class="bg-transparent w-full ml-3 focus:outline-none" placeholder="Cari Product" type="text" name="keyword">
+                        <input name="keyword" class="bg-transparent w-full ml-3 focus:outline-none" placeholder="Cari Karya" type="text" name="keyword">
                     </div>
                 </form>
             </div>
@@ -248,7 +248,7 @@
         document.addEventListener("DOMContentLoaded", setVanta);
     </script> -->
     
-
+    <!-- All product -->
         <div class="-mt-10 relative z-10 w-full h-20 backdrop-blur supports-backdrop-blur:bg-white/60 "></div>
 
         <div class="bg-transparent ">
@@ -259,7 +259,7 @@
                 
                     <?php foreach ($dataSemuaProduk as $value): ?>
         
-                        <?php if($value['resistance'] < 0): ?>
+                        <?php if($value['resistance'] < -10): ?>
                             <div>
                                 <div class="border bg-[#151D28] overflow-hidden border-white w-[200px] h-[380px] rounded-sm card">
                                     <h1 class="text-2xl font-bold text-white absolute z-10 mt-28 ml-16">Habis</h1>
@@ -427,7 +427,7 @@
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <img src="../img/anonymousProfile.png" width="150px" alt="" class="block rounded-full ml-28 mb-3">
                         <div class="col-span-2 flex justify-between font-bold">
-                            <label for="name" class="block mb-2 text-xs text-gray-900 dark:text-white">Point Kredit Mahasiswa</label>
+                            <label for="name" class="block mb-2 text-xs text-gray-900 dark:text-white">Point yang telah dipakai</label>
                             <input type="text" name="name" id="name" class="text-gray-900 text-right" value="25">
                         </div>
                         <div class="col-span-2">
