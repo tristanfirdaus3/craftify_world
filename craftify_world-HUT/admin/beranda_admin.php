@@ -31,14 +31,14 @@
             $query->execute();
             $data = $query->fetch();
             if($_SESSION['tipe'] == "user"){
-                header("Location: ../user/beranda.php");
+                header("Location:beranda.php");
                 exit();
             }
         }catch (PDOException $exception) {
             die("Connection error: " . $exception->getMessage());
         }
     }else{ 
-        header("Location: ../index.php");
+        header("Location:index.php");
         exit();
     }
 
@@ -48,7 +48,7 @@
         session_unset();
         session_destroy();
         
-        header("Location: ../index.php");
+        header("Location:index.php");
         exit();
     }
 ?>
@@ -60,7 +60,7 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <link rel="stylesheet" href="../animatedStars.css">
+    <link rel="stylesheet" href="animatedStars.css">
 </head>
 <body>
     <!-- Star Background -->
@@ -80,7 +80,7 @@
             <form action="" method="GET">
                 <div class="flex mt-6 border border-slate-400 rounded-sm p-2 w-full">
                     <span class="material-symbols-outlined">search</span>
-                    <input name="keyword" class="bg-transparent w-full ml-3 focus:outline-none" placeholder="Cari Product" type="text" name="keyword">
+                    <input name="keyword" class="bg-transparent w-full ml-3 focus:outline-none" placeholder="Cari Karya" type="text" name="keyword">
                 </div>
             </form>
         </div>
@@ -96,7 +96,7 @@
     <!-- Title -->
     <div class="h-full flex items-center justify-center font-sans" >
         <span>
-            <p class="text-slate-300 font-bold text-xs text-center">EXPLORE, CREATE AND GIVE POIN</p>
+            <p class="text-slate-300 font-bold text-xs text-center">EXPLORE, CREATE  AND GIVE POIN</p>
             <h1 class="text-white text-5xl font-bold text-center">Dashboard Admin</h1>
         </span>
     </div>
@@ -111,7 +111,7 @@
             <div class="border bg-[#151D28] rounded-md overflow-hidden border-red-white w-[200px] h-[380px] flex items-center justify-center">
                 <span class="text-white inline-block my-2 mx-4">
                         <span class="material-symbols-outlined text-6xl">add</span>
-                        <h1>Tambah karya</h1>
+                        <h1>Tambah Karya</h1>
                     </span>
                 </div>
             </button>
@@ -155,7 +155,7 @@
                 <form class="p-4" method="POST" action="" enctype="multipart/form-data">
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-2">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Produk</label>
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama karya</label>
                             <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
                         </div>
                         <div class="col-span-2">
@@ -184,34 +184,39 @@
     <!-- Fungsi Tambah Barang -->
     <?php 
         if(isset($_POST['tambahBarang'])){ 
-            $name = $_POST['name'];
-            $gambar = $_FILES["gambar"]["tmp_name"];
-            $give_poin = $_POST['give_poin'];
-            $resistance = $_POST['resistance'];
+    $name = $_POST['name'];
+    $gambar = $_FILES["gambar"]["tmp_name"];
+    $give_poin = $_POST['give_poin'];
+    $resistance = $_POST['resistance'];
 
-            $target_dir = "img/";
-            $target_file = $target_dir . basename($_FILES["gambar"]["name"]);
-            $noSpasiFile = preg_replace('/\s+/', '', $target_file);
-            copy($gambar, "../$noSpasiFile");
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $target_dir = "img/";
+    $target_file = $target_dir . preg_replace('/\s+/', '', basename($_FILES["gambar"]["name"]));
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
+    
+    $check = getimagesize($gambar);
+    if($check !== false) {
+        
+        if (move_uploaded_file($gambar, $target_file)) {
             try { 
-                $query = $db->prepare("insert into produk
-                (nama, give_poin, resistance, gambar) values (?,?,?,?) ");
+                $query = $db->prepare("insert into produk (nama, give_poin, resistance, gambar) values (?, ?, ?, ?)");
                 $query->bindParam(1, $name);
                 $query->bindParam(2, $give_poin);
                 $query->bindParam(3, $resistance);
-                $query->bindParam(4, $noSpasiFile);
+                $query->bindParam(4, $target_file);
                 $query->execute();
-                $query=null; //tutup koneksi
-                echo "<script> alert('Produk berhasil diTambah!!');
-                window.location.replace('beranda_admin.php');</script>"; 
-                die(); 
-            }catch (PDOException $exception) {
+                echo "<script> alert('Produk berhasil ditambahkan!'); window.location.replace('beranda_admin.php');</script>";
+            } catch (PDOException $exception) {
                 die("Connection error: " . $exception->getMessage());
             }
+        } else {
+            echo "<script> alert('Gagal mengupload gambar ke direktori.');</script>";
         }
+    } else {
+        echo "<script> alert('File bukan gambar.');</script>";
+    }
+}
     ?>
 
     <!-- Profile modal -->
