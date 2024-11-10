@@ -44,7 +44,7 @@
         session_unset();
         session_destroy();
         
-        header("Location: ../index.php");
+        header("Location:index.php");
         exit();
     }
 ?>
@@ -88,7 +88,7 @@
     </nav>
 
     <span class="flex justify-between text-white font-extrabold text-2xl mb-2 max-w-[670px] mt-40 ml-10">
-        <h1>Daftar Belanja</h1>
+        <h1>Daftar Karya</h1>
         <h1><?php echo(count($dataKeranjang)); ?></h1>
     </span>
 
@@ -108,44 +108,44 @@
                     </div>
         
                     <div class="flex justify-end gap-10 mb-5">
-                        <a href="hapusKeranjang.php?id_produk=<?php echo$keranjang['id_produk']?>&jumlah_barang=<?php echo$keranjang['jumlah_barang']; ?>">
+                        <a href="hapusKeranjang.php?id_produk=<?php echo$keranjang['id_produk']?>&jumlah_Poin=<?php echo$keranjang['jumlah_Poin']; ?>">
                             <span class="material-symbols-outlined mt-2">
                                 delete
                             </span>
                         </a>
                         <div class="flex rounded-md p-2 w-[100px]">
-                            <input id="jumlah" class="bg-transparent w-full ml-3 focus:outline-none text-center mr-2" type="text" value="<?php echo$keranjang['jumlah_barang'] ?>"> barang
+                            <input id="jumlah" class="bg-transparent w-full ml-3 focus:outline-none text-center mr-2" type="text" value="<?php echo$keranjang['jumlah_Poin'] ?>"> Poin
                         </div>
                     </div>
                     <hr class="bg-white">
                 </div>
 
                 <?php 
-                    $give_poinSemuaProduk += $keranjang['give_poin'] * $keranjang['jumlah_barang']; 
-                    $jumlahSemuaProduk += $keranjang['jumlah_barang'];
+                    $give_poinSemuaProduk += $keranjang['give_poin'] * $keranjang['jumlah_Poin']; 
+                    $jumlahSemuaProduk += $keranjang['jumlah_Poin'];
                     $dataPegive_poinroduk[$i]['id_produk'] = $keranjang['id_produk'];
-                    $dataPegive_poinroduk[$i]['jumlah_barang'] = $keranjang['jumlah_barang'];
+                    $dataPegive_poinroduk[$i]['jumlah_Poin'] = $keranjang['jumlah_Poin'];
                     $dataPegive_poinroduk[$i]['resistance'] = $keranjang['resistance'];
-                    $dataPegive_poinroduk[$i]['Poin_karya'] = $keranjang['Poin_karya'];
+                    $dataPegive_poinroduk[$i]['jumlah_Poin'] = $keranjang['jumlah_Poin'];
                 ?>
             <?php $i++; endforeach; ?>
         </div>
 
         <form action="" method="POST">
             <div class="fixed h-[350px] -mt-10 right-40">
-                <h1 class="font-extrabold text-2xl mb-2 max-w-[800px] text-center">Ringkasan Belanja</h1><br>
+                <h1 class="font-extrabold text-2xl mb-2 max-w-[800px] text-center">Ringkasan daftar</h1><br>
                 
                 <div class="bg-[#1E2933] rounded-md w-[300px] h-[80%] py-6 px-2 font-bold">
                     <span class="text-center mb-8 flex justify-between p-5">
-                        <h1>Jumlah Barang </h1>
+                        <h1>Jumlah Poin</h1>
                         <h1><?php echo$jumlahSemuaProduk ?></h1>
                     </span>
                     <div class="flex justify-between mb-8 mx-3 p-5">
-                        <h1>Total Bayar</h1>
+                        <h1>Total Poin</h1>
                         <h1>give_poin<?php echo$give_poinSemuaProduk ?></h1>
                     </div>
                     <div class="flex justify-center">
-                        <button name="beli" class="border border-slate-400 rounded-md py-1 w-24 text-center">Beli</button>
+                        <button name="beli" class="border border-slate-400 rounded-md py-1 w-24 text-center">Beri</button>
                     </div>
                 </div>
             </div>
@@ -233,7 +233,7 @@
                     $data = $query->fetchAll();
 
                     $query=null; //tutup koneksi
-                    echo "<script> alert('Pembelian Berhasi!!');
+                    echo "<script> alert('Pemberian poin Berhasi!!');
                     window.location.replace('beranda.php');</script>"; 
                     die(); 
                 }catch (PDOException $exception) {
